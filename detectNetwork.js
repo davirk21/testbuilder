@@ -34,15 +34,7 @@ var detectNetwork = function(cardNumber) {
 
   }  
 
-  if(cardNumber.startsWith("4") 
 
-	&& (cardNumber.length === 13 
-	|| cardNumber.length === 16 
-	|| cardNumber.length === 19)){
-
-  	return cardName = "Visa";
-
-  }  
 
   if((cardNumber.startsWith("51") 
 	|| cardNumber.startsWith("52")
@@ -137,6 +129,15 @@ var detectNetwork = function(cardNumber) {
   	return false;
   }
   
+    if(cardNumber.startsWith("4") 
+
+	&& (cardNumber.length === 13 
+	|| cardNumber.length === 16 
+	|| cardNumber.length === 19)){
+
+  	return cardName = "Visa";
+
+  }  
 
 return cardName;
 };

@@ -55,19 +55,7 @@ describe('Diner\'s Club', function() {
     detectNetwork('39345678901234').should.equal("Diner's Club");
   });
 
-  // it('has a prefix of 38 and a length of 14', function() {
- 
-  //   if (detectNetwork('38345678901234') !== 'Diner\'s Club') {
-  //     throw new Error('Test failed');
-  //   }
-  // });
 
-  // it('has a prefix of 39 and a length of 14', function() {
-  //   if (detectNetwork('39345678901234') !== 'Diner\'s Club') {
-  //     throw new Error('Test failed');
-  //   }
- 
-  //  });
 });
 
 describe('American Express', function() {
@@ -89,13 +77,7 @@ describe('American Express', function() {
     detectNetwork('373456789012345').should.equal("American Express");
   });
 
-  // it('has a prefix of 34 and a length of 15', function() {
-  //   assert(detectNetwork('343456789012345') === 'American Express');
-  // });
-
-  // it('has a prefix of 37 and a length of 15', function() {
-  //   assert(detectNetwork('373456789012345') === 'American Express');
-  // });
+ 
 });
 
 describe('Visa', function() {
@@ -119,17 +101,7 @@ describe('Visa', function() {
   });
  
 
-  // it('has a prefix of 4 and a length of 13', function() {
-  //   assert(detectNetwork('4123456789012') === 'Visa');
-  // });
 
-  // it('has a prefix of 4 and a length of 16', function() {
-  //   assert(detectNetwork('4123456789012345') === 'Visa');
-  // });
-
-  // it('has a prefix of 4 and a length of 19', function() {
-  //   assert(detectNetwork('4123456789012345678') === 'Visa');
-  // });
 });
 
 describe('MasterCard', function() {
@@ -151,20 +123,6 @@ describe('MasterCard', function() {
     detectNetwork('5312345678901234').should.equal("MasterCard");
   });
  
- 
- 
- 
-  // it("has a prefix of 51 and a length of 16", function() {
-  //   expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
-  // });
- 
-  // it("has a prefix of 52 and a length of 16", function() {
-  //   expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
-  // });
- 
-  // it("has a prefix of 53 and a length of 16", function() {
-  //   expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
-  // });
  
 
   // You can also use should instead of expect, which changes the style
@@ -296,28 +254,24 @@ describe('Switch',function(){
 
     var prefix = switchDigits[i].toString();
 
-    var switchLength = [16,18,19];
+    for( var j = 16; j <= 19; j++){
 
-    for( var j = 0; j < switchLength.length; j++){
+      if(j === 17){ continue;}
+      
+      var str = "1".repeat(j - prefix.length);
+     
 
-      if(switchLength[j] === 17){
-        continue;
-      }
+      (function(prefix, j , str){
 
-      var str = "1".repeat(switchLength[i] - prefix.length);
-      console.log("strtotal" + prefix + str  + "length"+ switchLength[i]);
+        console.log("strtotal" + prefix + str  + "length"+ j);
 
-      (function(prefix, switchLength , str){
-
-        //console.log("strtotal" + prefix + str  + "length"+ switchLength[i]);
-
-        it('has a prefix of '+ prefix + ' and a length of '+ switchLength[i], function(){
+        it('has a prefix of '+ prefix + ' and a length of '+ j, function(){
           detectNetwork(prefix + str).should.equal("Switch");
           
           });
 
-      })(prefix, switchLength , str)
-      }
+      })(prefix, j , str)
+      
     }
   }
 
